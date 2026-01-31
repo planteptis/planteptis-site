@@ -1,65 +1,140 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+    <main>
+      {/* HERO */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <p className="text-sm font-medium text-gray-500">
+          Planteptis AI
+        </p>
+
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
+          Smart hydroponics for homes & offices
+        </h1>
+
+        <p className="mt-6 max-w-2xl text-lg text-gray-600">
+          Grow greens, herbs, fruits, and salads indoors using a clean,
+          automated hydroponic system designed for everyday spaces.
+        </p>
+
+        <div className="mt-10 flex flex-wrap gap-4">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
+            className="rounded-full bg-black px-6 py-3 text-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            Request a demo
           </a>
+
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/product"
+            className="rounded-full border px-6 py-3"
           >
-            Documentation
+            View product
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="border-t bg-gray-50">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-2xl font-semibold">
+            Why Planteptis AI
+          </h2>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="rounded-2xl border bg-white p-6">
+              <h3 className="text-lg font-semibold">
+                Grow year-round
+              </h3>
+              <p className="mt-2 text-gray-600">
+                Fresh greens and herbs all year, regardless of weather.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border bg-white p-6">
+              <h3 className="text-lg font-semibold">
+                Minimal maintenance
+              </h3>
+              <p className="mt-2 text-gray-600">
+                Automated watering, lighting, and nutrient control.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border bg-white p-6">
+              <h3 className="text-lg font-semibold">
+                Smart & compact
+              </h3>
+              <p className="mt-2 text-gray-600">
+                Designed to fit homes, offices, cafés, and studios.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="border-t">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="text-2xl font-semibold">
+            How it works
+          </h2>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-4">
+            <div>
+              <span className="text-sm text-gray-500">01</span>
+              <h3 className="mt-2 font-semibold">Install system</h3>
+              <p className="mt-1 text-gray-600">
+                Place the system in your space and connect water & power.
+              </p>
+            </div>
+
+            <div>
+              <span className="text-sm text-gray-500">02</span>
+              <h3 className="mt-2 font-semibold">Plant seeds</h3>
+              <p className="mt-1 text-gray-600">
+                Insert seed pods and select plant types.
+              </p>
+            </div>
+
+            <div>
+              <span className="text-sm text-gray-500">03</span>
+              <h3 className="mt-2 font-semibold">Automated growth</h3>
+              <p className="mt-1 text-gray-600">
+                AI-guided lighting and nutrients optimize growth.
+              </p>
+            </div>
+
+            <div>
+              <span className="text-sm text-gray-500">04</span>
+              <h3 className="mt-2 font-semibold">Harvest</h3>
+              <p className="mt-1 text-gray-600">
+                Enjoy fresh produce directly from your space.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t bg-gray-50">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <div className="rounded-3xl border bg-white p-10">
+            <h2 className="text-2xl font-semibold">
+              Ready to grow smarter?
+            </h2>
+
+            <p className="mt-3 text-gray-600">
+              Tell us about your space and we’ll help you choose the perfect setup.
+            </p>
+
+            <a
+              href="/contact"
+              className="mt-6 inline-block rounded-full bg-black px-6 py-3 text-white"
+            >
+              Contact us
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
