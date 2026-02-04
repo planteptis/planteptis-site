@@ -1,137 +1,185 @@
+"use client";
+
+import { translations } from "@/lib/i18n";
+import { useLang } from "@/components/LanguageProvider";
+
 export default function Home() {
+  const { lang } = useLang();
+  const t = translations[lang].home;
+  const productEyebrowTop = -15; // поднять выше -> больше минус (например -12)
+  const productEyebrowSize = 19; // размер текста Product (например 14)
+
   return (
     <main>
-      {/* HERO */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <p className="text-sm font-medium text-gray-500">
-          Planteptis AI
-        </p>
-
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight md:text-6xl">
-          Smart hydroponics for homes & offices
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-lg text-gray-600">
-          Grow greens, herbs, fruits, and salads indoors using a clean,
-          automated hydroponic system designed for everyday spaces.
-        </p>
-
-        <div className="mt-10 flex flex-wrap gap-4">
-          <a
-            href="/contact"
-            className="rounded-full bg-black px-6 py-3 text-white"
-          >
-            Request a demo
-          </a>
-
-          <a
-            href="/product"
-            className="rounded-full border px-6 py-3"
-          >
-            View product
-          </a>
-        </div>
-      </section>
-
-      {/* FEATURES */}
-      <section className="border-t bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="text-2xl font-semibold">
-            Why Planteptis AI
-          </h2>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border bg-white p-6">
-              <h3 className="text-lg font-semibold">
-                Grow year-round
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Fresh greens and herbs all year, regardless of weather.
-              </p>
+      <section className="hero">
+        <div className="hero-bg" />
+        <div className="container section hero-grid">
+          <div className="hero-copy reveal" style={{ animationDelay: "0.05s" }}>
+            <div className="eyebrow">{t.hero.eyebrow}</div>
+            <h1 className="display">
+              {t.hero.titleLine1}
+              <br />
+              {t.hero.titleLine2}
+            </h1>
+            <p className="p">{t.hero.description}</p>
+            <div className="btn-row">
+              <a className="btn primary" href="/contact#shop-form">
+                {t.hero.primaryCta}
+              </a>
+              <a className="btn ghost" href="/product">
+                {t.hero.secondaryCta}
+              </a>
             </div>
-
-            <div className="rounded-2xl border bg-white p-6">
-              <h3 className="text-lg font-semibold">
-                Minimal maintenance
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Automated watering, lighting, and nutrient control.
-              </p>
+            <div className="pill-row">
+              {t.hero.pills.map((pill) => (
+                <span key={pill} className="pill">{pill}</span>
+              ))}
             </div>
+          </div>
 
-            <div className="rounded-2xl border bg-white p-6">
-              <h3 className="text-lg font-semibold">
-                Smart & compact
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Designed to fit homes, offices, cafés, and studios.
-              </p>
+          <div className="hero-media reveal" style={{ animationDelay: "0.15s" }}>
+            <div style={{ position: "relative" }}>
+              <img
+                src="/vertical.png"
+                alt="Hydroponic garden"
+              />
+              <div className="overlay-grid">
+                {t.hero.stats.map((stat) => (
+                  <div key={stat.label} className="stat">
+                    <span>{stat.label}</span>
+                    <strong>{stat.value}</strong>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section className="border-t">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <h2 className="text-2xl font-semibold">
-            How it works
-          </h2>
-
-          <div className="mt-10 grid gap-8 md:grid-cols-4">
-            <div>
-              <span className="text-sm text-gray-500">01</span>
-              <h3 className="mt-2 font-semibold">Install system</h3>
-              <p className="mt-1 text-gray-600">
-                Place the system in your space and connect water & power.
-              </p>
+      <section className="section sm">
+        <div className="container">
+          <div className="split">
+            <div className="reveal" style={{ animationDelay: "0.05s" }}>
+              <div className="eyebrow" style={{ position: "relative", top: -35, fontSize: 19 }}>
+                {t.why.eyebrow}
+              </div>
+              <h2 className="h2">{t.why.title}</h2>
+              <p className="p">{t.why.description}</p>
             </div>
-
-            <div>
-              <span className="text-sm text-gray-500">02</span>
-              <h3 className="mt-2 font-semibold">Plant seeds</h3>
-              <p className="mt-1 text-gray-600">
-                Insert seed pods and select plant types.
-              </p>
-            </div>
-
-            <div>
-              <span className="text-sm text-gray-500">03</span>
-              <h3 className="mt-2 font-semibold">Automated growth</h3>
-              <p className="mt-1 text-gray-600">
-                AI-guided lighting and nutrients optimize growth.
-              </p>
-            </div>
-
-            <div>
-              <span className="text-sm text-gray-500">04</span>
-              <h3 className="mt-2 font-semibold">Harvest</h3>
-              <p className="mt-1 text-gray-600">
-                Enjoy fresh produce directly from your space.
-              </p>
+            <div className="grid grid-2">
+              {t.why.cards.map(([title, desc]) => (
+                <div key={title} className="card">
+                  <strong style={{ display: "block", marginBottom: 8 }}>{title}</strong>
+                  <span className="p" style={{ fontSize: 15 }}>
+                    {desc}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t bg-gray-50">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <div className="rounded-3xl border bg-white p-10">
-            <h2 className="text-2xl font-semibold">
-              Ready to grow smarter?
-            </h2>
-
-            <p className="mt-3 text-gray-600">
-              Tell us about your space and we’ll help you choose the perfect setup.
-            </p>
-
-            <a
-              href="/contact"
-              className="mt-6 inline-block rounded-full bg-black px-6 py-3 text-white"
+      <section className="section" style={{ background: "#f2f7f3" }}>
+        <div className="container split">
+          <div className="image-frame reveal" style={{ animationDelay: "0.05s" }}>
+            <img
+              src="https://images.unsplash.com/photo-1485637701894-09ad422f6de6?auto=format&fit=crop&w=1600&q=80"
+              alt="Indoor greens"
+            />
+          </div>
+          <div className="reveal" style={{ animationDelay: "0.15s" }}>
+            <div
+              className="eyebrow"
+              style={{ position: "relative", top: productEyebrowTop, fontSize: productEyebrowSize }}
             >
-              Contact us
-            </a>
+              {t.product.eyebrow}
+            </div>
+            <h2 className="h2">{t.product.title}</h2>
+            <p className="p">{t.product.description}</p>
+            <div className="btn-row">
+              <a className="btn primary" href="/product">
+                {t.product.primaryCta}
+              </a>
+              <a className="btn ghost" href="/contact#shop-form">
+                {t.product.secondaryCta}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section className="section" style={{ background: "#f9f6f0" }}>
+        <div className="container">
+          <div className="eyebrow">{t.pricing.eyebrow}</div>
+          <h2 className="h2">{t.pricing.title}</h2>
+          <p className="p" style={{ maxWidth: 620 }}>
+            {t.pricing.description}
+          </p>
+
+          <div className="grid grid-2" style={{ marginTop: 24 }}>
+            {/* Standard */}
+            <div className="card" style={{ background: "#ffffff", border: "1px solid rgba(12,27,23,0.10)", boxShadow: "0 18px 45px rgba(12,27,23,0.08)" }}>
+              <div style={{ borderRadius: 20, overflow: "hidden", background: "#f6f6f6", border: "1px solid rgba(12,27,23,0.08)", padding: 16 }}>
+                <div style={{ minHeight: 240, display: "grid", placeItems: "center" }}>
+                  <img
+                    src="/products/standard.jpg"
+                    alt="Standard model"
+                    style={{ maxWidth: "100%", maxHeight: 220, width: "auto", height: "auto", display: "block" }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ fontSize: 20, fontWeight: 800 }}>{t.pricing.standard.name}</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: "#1b7c4c" }}>{t.pricing.standard.price}</div>
+              </div>
+
+              <ul style={{ marginTop: 12, padding: 0, listStyle: "none", display: "grid", gap: 8 }}>
+                {t.pricing.standard.features.map((item) => (
+                  <li key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                    <span style={{ color: "#1b7c4c", fontWeight: 900 }}>•</span>
+                    <span className="p" style={{ fontSize: 14 }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a className="btn primary" href="/contact#shop-form" style={{ marginTop: 16 }}>
+                {t.pricing.cta}
+              </a>
+            </div>
+
+            {/* Advanced */}
+            <div className="card" style={{ background: "#ffffff", border: "1px solid rgba(12,27,23,0.10)", boxShadow: "0 18px 45px rgba(12,27,23,0.08)" }}>
+              <div style={{ borderRadius: 20, overflow: "hidden", background: "#f6f6f6", border: "1px solid rgba(12,27,23,0.08)", padding: 16 }}>
+                <div style={{ minHeight: 240, display: "grid", placeItems: "center" }}>
+                  <img
+                    src="/products/advanced.jpg"
+                    alt="Advanced model"
+                    style={{ maxWidth: "100%", maxHeight: 220, width: "auto", height: "auto", display: "block" }}
+                  />
+                </div>
+              </div>
+
+              <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <div style={{ fontSize: 20, fontWeight: 800 }}>{t.pricing.advanced.name}</div>
+                <div style={{ fontSize: 22, fontWeight: 800, color: "#1b7c4c" }}>{t.pricing.advanced.price}</div>
+              </div>
+
+              <ul style={{ marginTop: 12, padding: 0, listStyle: "none", display: "grid", gap: 8 }}>
+                {t.pricing.advanced.features.map((item) => (
+                  <li key={item} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+                    <span style={{ color: "#1b7c4c", fontWeight: 900 }}>•</span>
+                    <span className="p" style={{ fontSize: 14 }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a className="btn primary" href="/contact#shop-form" style={{ marginTop: 16 }}>
+                {t.pricing.cta}
+              </a>
+            </div>
           </div>
         </div>
       </section>

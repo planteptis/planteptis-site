@@ -1,90 +1,109 @@
 "use client";
+
+import { translations } from "@/lib/i18n";
+import { useLang } from "@/components/LanguageProvider";
+
 export default function ContactPage() {
-  const email = "hello@planteptis.ai"; // поменяешь на свой email
-  const subject = encodeURIComponent("Planteptis AI — demo request");
+  const { lang } = useLang();
+  const t = translations[lang].contact;
+  const contactCardsLift = 70; // выше = больше число
+  const shopAnchorOffset = 140; // больше число = ниже прокрутка (чтобы всё видно)
 
   return (
-    <main className="mx-auto max-w-6xl px-6 py-20">
-      <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
-        Contact
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg text-gray-600">
-        Tell us about your space — we’ll reply with a setup recommendation.
-      </p>
-
-      <div className="mt-12 grid gap-8 md:grid-cols-2">
-        <form
-          className="rounded-3xl border bg-white p-8"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const form = e.currentTarget;
-            const data = new FormData(form);
-
-            const name = String(data.get("name") || "");
-            const from = String(data.get("email") || "");
-            const city = String(data.get("city") || "");
-            const grow = String(data.get("grow") || "");
-
-            const body = encodeURIComponent(
-              `Name: ${name}\nEmail: ${from}\nCity: ${city}\nWhat I want to grow: ${grow}\n`
-            );
-
-            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-          }}
-        >
-          <label className="block text-sm font-medium">Name</label>
-          <input
-            name="name"
-            required
-            className="mt-2 w-full rounded-xl border px-4 py-3"
-            placeholder="Mardan"
-          />
-
-          <label className="mt-6 block text-sm font-medium">Email</label>
-          <input
-            name="email"
-            type="email"
-            required
-            className="mt-2 w-full rounded-xl border px-4 py-3"
-            placeholder="you@email.com"
-          />
-
-          <label className="mt-6 block text-sm font-medium">City</label>
-          <input
-            name="city"
-            className="mt-2 w-full rounded-xl border px-4 py-3"
-            placeholder="Almaty"
-          />
-
-          <label className="mt-6 block text-sm font-medium">What do you want to grow?</label>
-          <textarea
-            name="grow"
-            className="mt-2 w-full rounded-xl border px-4 py-3"
-            rows={4}
-            placeholder="Salads, herbs, strawberries..."
-          />
-
-          <button
-            type="submit"
-            className="mt-8 w-full rounded-full bg-black px-6 py-3 text-white"
-          >
-            Send request
-          </button>
-        </form>
-
-        <div className="rounded-3xl border bg-gray-50 p-8">
-          <h2 className="text-xl font-semibold">Email</h2>
-          <p className="mt-3 text-gray-600">{email}</p>
-
-          <h2 className="mt-10 text-xl font-semibold">What to include</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-700">
-            <li>Home or office?</li>
-            <li>How much free space you have</li>
-            <li>What you want to grow</li>
-            <li>Your city (for shipping/install)</li>
-          </ul>
+    <main>
+      <section className="section" style={{ background: "#f9f6f0" }}>
+        <div className="container split">
+          <div>
+            <div className="eyebrow">{t.eyebrow}</div>
+            <h1 className="display">{t.title}</h1>
+            <p className="p">{t.description}</p>
+            <div className="pill-row">
+              {t.pills.map((pill) => (
+                <span key={pill} className="pill">{pill}</span>
+              ))}
+            </div>
+          </div>
+          <div className="image-frame">
+            <img
+              src="/shipley.png"
+              alt="Green plants"
+            />
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section
+        className="section"
+        id="shop-form"
+        style={{ scrollMarginTop: shopAnchorOffset }}
+      >
+        <div
+          className="container split"
+          style={{ alignItems: "stretch", marginTop: -contactCardsLift }}
+        >
+          <div className="card" style={{ height: "100%" }}>
+            <h2 className="h2" style={{ marginTop: 0 }}>
+              {t.shopTitle}
+            </h2>
+            <p className="p" style={{ marginBottom: 18 }}>
+              {t.shopDesc}
+            </p>
+
+            <form className="form">
+              <div className="field">
+                <label htmlFor="name">{t.fullName}</label>
+                <input id="name" name="name" placeholder={t.fullNamePlaceholder} required />
+              </div>
+              <div className="field">
+                <label htmlFor="email">{t.email}</label>
+                <input id="email" name="email" placeholder={t.emailPlaceholder} type="email" required />
+              </div>
+              <div className="field">
+                <label htmlFor="model">{t.model}</label>
+                <select id="model" name="model" defaultValue="" required>
+                  <option value="" disabled>{t.modelPlaceholder}</option>
+                  <option value="Standard">{t.standard}</option>
+                  <option value="Advanced">{t.advanced}</option>
+                </select>
+              </div>
+              <button className="btn primary" type="submit">
+                {t.send}
+              </button>
+            </form>
+
+            <div className="p" style={{ marginTop: 12, fontSize: 14 }}>
+              {t.phoneLine}
+            </div>
+          </div>
+
+          <div className="card soft" style={{ height: "100%" }}>
+            <h2 className="h2" style={{ marginTop: 0 }}>
+              {t.detailsTitle}
+            </h2>
+            <p className="p">{t.detailsDesc}</p>
+            <div style={{ marginTop: 18 }}>
+              <div style={{ fontWeight: 700 }}>{t.email}</div>
+              <div className="p">hello@planteptis.ai</div>
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <div style={{ fontWeight: 700 }}>{t.phoneLabel}</div>
+              <div className="p">+7 (747) 399-03-70</div>
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <div style={{ fontWeight: 700 }}>{t.locationLabel}</div>
+              <div className="p">{t.locationValue}</div>
+            </div>
+            <div style={{ marginTop: 24 }}>
+              <div style={{ fontWeight: 700 }}>{t.nextTitle}</div>
+              <ul style={{ marginTop: 10, paddingLeft: 18, color: "var(--muted)", lineHeight: 1.7 }}>
+                {t.nextList.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

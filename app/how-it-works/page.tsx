@@ -1,44 +1,77 @@
+"use client";
+
+import { translations } from "@/lib/i18n";
+import { useLang } from "@/components/LanguageProvider";
+
 export default function HowItWorksPage() {
+  const { lang } = useLang();
+  const t = translations[lang].how;
+
   return (
-    <main style={{ padding: "80px 24px", maxWidth: 1000, margin: "0 auto" }}>
-      <h1 style={{ fontSize: "48px", fontWeight: 700 }}>
-        How it works
-      </h1>
-
-      <p style={{ marginTop: 16, fontSize: 18, color: "#555" }}>
-        Planteptis AI makes growing fresh greens simple, automated, and
-        accessible for everyone.
-      </p>
-
-      <section style={{ marginTop: 48 }}>
-        <h2>1. Install the system</h2>
-        <p>
-          Place the compact hydroponic system in your home or office.
-          No soil, no mess.
-        </p>
+    <main>
+      <section className="section" style={{ background: "#f9f6f0" }}>
+        <div className="container">
+          <div className="eyebrow">{t.eyebrow}</div>
+          <h1 className="display">{t.title}</h1>
+          <p className="p" style={{ maxWidth: 680 }}>
+            {t.description}
+          </p>
+        </div>
       </section>
 
-      <section style={{ marginTop: 32 }}>
-        <h2>2. Add plants & water</h2>
-        <p>
-          Insert plant pods, add water and nutrients once — the system
-          handles the rest.
-        </p>
+      <section className="section">
+        <div className="container grid grid-2">
+          {t.steps.map(([n, title, desc]) => (
+            <div key={title} className="card">
+              <div style={{ fontWeight: 800, color: "rgba(12,27,23,0.5)" }}>{n}</div>
+              <div style={{ fontWeight: 800, marginTop: 10 }}>{title}</div>
+              <p className="p" style={{ fontSize: 15, marginTop: 8 }}>
+                {desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section style={{ marginTop: 32 }}>
-        <h2>3. AI takes control</h2>
-        <p>
-          Sensors and AI automatically manage lighting, watering, and
-          nutrients 24/7.
-        </p>
+      <section className="section" style={{ background: "#f2f7f3" }}>
+        <div className="container split">
+          <div>
+            <h2 className="h2">{t.supportTitle}</h2>
+            <p className="p">{t.supportDesc}</p>
+            <ul style={{ marginTop: 16, paddingLeft: 18, color: "var(--muted)", lineHeight: 1.7 }}>
+              {t.supportList.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="image-frame">
+            <img
+              src="/jack.png"
+              alt="Growing greens"
+            />
+          </div>
+        </div>
       </section>
 
-      <section style={{ marginTop: 32 }}>
-        <h2>4. Harvest anytime</h2>
-        <p>
-          Enjoy fresh herbs and greens year-round, grown right where you live.
-        </p>
+      <section className="section sm">
+        <div className="container">
+          <div className="card dark" style={{ display: "flex", flexWrap: "wrap", gap: 18, alignItems: "center", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontSize: 20, fontWeight: 800 }}>{t.ctaTitle}</div>
+              <p className="p" style={{ color: "rgba(244,251,247,0.75)", marginTop: 8 }}>
+                {t.ctaDesc}
+              </p>
+            </div>
+            <div className="btn-row" style={{ marginTop: 0 }}>
+              <a className="btn primary" href="/contact#shop-form">
+                {t.ctaPrimary}
+              </a>
+              <a className="btn ghost" href="/product">
+                {t.ctaSecondary}
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

@@ -1,37 +1,66 @@
+"use client";
+
 import Link from "next/link";
+import LanguageSwitch from "./LanguageSwitch";
+import { translations } from "@/lib/i18n";
+import { useLang } from "./LanguageProvider";
 
 export default function Header() {
+  const { lang } = useLang();
+  const t = translations[lang].header;
+
   return (
-    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {/* Logo */}
-        <Link href="/" className="font-semibold text-lg">
-          Planteptis AI
-        </Link>
-
-        {/* Navigation */}
-        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
-          <Link href="/product" className="hover:text-black">
-            Product
-          </Link>
-          <Link href="/how-it-works" className="hover:text-black">
-            How it works
-          </Link>
-          <Link href="/pricing" className="hover:text-black">
-            Pricing
-          </Link>
-          <Link href="/contact" className="hover:text-black">
-            Contact
-          </Link>
-        </nav>
-
-        {/* CTA */}
+    <header className="site-header">
+      <div className="container header-inner">
         <Link
-          href="/contact"
-          className="rounded-full bg-black px-4 py-2 text-sm text-white"
+          href="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            color: "inherit",
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+          }}
         >
-          Get a demo
+          <img
+            src="/brand/logo.jpg"
+            alt="Planteptis AI"
+            width={56}
+            height={56}
+            style={{
+              borderRadius: 14,
+              background: "#ffffff",
+              padding: 6,
+              border: "1px solid rgba(12,27,23,0.12)",
+              display: "block",
+            }}
+          />
+          <span style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.01em" }}>
+            Planteptis AI
+          </span>
         </Link>
+
+        <div className="header-right">
+          <LanguageSwitch />
+          <nav className="nav">
+            <Link href="/product" className="nav-link">
+              {t.product}
+            </Link>
+            <Link href="/how-it-works" className="nav-link">
+              {t.how}
+            </Link>
+            <Link href="/pricing" className="nav-link">
+              {t.pricing}
+            </Link>
+            <Link href="/contact" className="nav-link">
+              {t.contact}
+            </Link>
+            <Link href="/contact#shop-form" className="nav-cta">
+              {t.shop}
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );
