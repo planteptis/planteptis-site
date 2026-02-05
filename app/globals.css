@@ -164,7 +164,7 @@ img { max-width: 100%; height: auto; }
 @keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes float { from { transform: translateY(0); } to { transform: translateY(12px); } }
 
-/* MOBILE - всё вертикально */
+/* MOBILE - ВСЁ ВЕРТИКАЛЬНО */
 @media (max-width: 900px) {
   .container { width: calc(100% - 28px); }
   .section { padding: 58px 0; }
@@ -183,10 +183,21 @@ img { max-width: 100%; height: auto; }
   .header-inner { flex-direction: column; align-items: center; gap: 12px; }
   .header-inner > a { width: 100%; justify-content: center; }
   .header-right { width: 100%; flex-direction: column; align-items: center; gap: 12px; }
+
   .lang-switch { width: 100%; justify-content: center; }
-  .nav { width: 100%; flex-direction: column; align-items: center; gap: 10px; }
-  .nav-link { width: 100%; text-align: center; padding: 6px 0; font-size: 15px; }
-  .nav-cta { width: 100%; text-align: center; padding: 12px 0; }
+
+  .nav {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .nav-link, .nav-cta {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-cta { padding: 12px 0; }
 
   .footer-grid { grid-template-columns: 1fr; text-align: center; }
   .footer-brand { justify-items: center; }
