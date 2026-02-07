@@ -202,7 +202,7 @@ export const translations = {
       detailsDesc: "Prefer email or WhatsApp? Reach us directly.",
       phoneLabel: "Phone / WhatsApp",
       locationLabel: "Location",
-      locationValue: "Astana, Kazakhstan",
+      locationValue: "Almaty, Kazakhstan",
       nextTitle: "What happens next",
       nextList: [
         "We confirm your model selection",
@@ -409,7 +409,7 @@ export const translations = {
       detailsDesc: "Удобнее email или WhatsApp? Напишите напрямую.",
       phoneLabel: "Телефон / WhatsApp",
       locationLabel: "Местоположение",
-      locationValue: "Астана, Казахстан",
+      locationValue: "Алматы, Казахстан",
       nextTitle: "Что дальше",
       nextList: [
         "Мы подтверждаем выбранную модель",
@@ -616,7 +616,7 @@ export const translations = {
       detailsDesc: "Email немесе WhatsApp ыңғайлы ма? Тікелей жазыңыз.",
       phoneLabel: "Телефон / WhatsApp",
       locationLabel: "Орналасуы",
-      locationValue: "Астана, Қазақстан",
+      locationValue: "Алматы, Қазақстан",
       nextTitle: "Келесі қадам",
       nextList: [
         "Таңдалған модельді растаймыз",
