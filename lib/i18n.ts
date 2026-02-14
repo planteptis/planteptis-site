@@ -569,7 +569,7 @@ export const translations = {
     },
     pricing: {
       eyebrow: "Бағалар",
-      title: "Қарапайым бға. Екі модель. Жаңа өнім.",
+      title: "Қарапайым баға. Екі модель. Жаңа өнім.",
       description: "Қарапайым баға. Екі модель. Жаңа өнім.",
       standard: {
         name: "Standard",
